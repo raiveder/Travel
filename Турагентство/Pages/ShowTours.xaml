@@ -55,7 +55,6 @@
                             <StackPanel>
                                 <StackPanel Margin="10">
                                     <TextBlock Text="{Binding Name}" Style="{StaticResource tbShowTours}" TextWrapping="Wrap" FontSize="20" Margin="10 0 10 10"/>
-                                    <TextBlock Text="{Binding ImagePreview}" Style="{StaticResource tbShowTours}" TextWrapping="Wrap" FontSize="20" Margin="10 0 10 10"/>
                                     <Image Source="{Binding ImagePreview}" Height="110" Width="180"/>
                                     <TextBlock Text="{Binding Price}" Style="{StaticResource tbShowTours}"/>
                                     <StackPanel Orientation="Horizontal">
