@@ -1,0 +1,92 @@
+﻿<Page x:Class="Турагентство.ShowTours"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Турагентство"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ShowTours">
+
+    <Grid Background="PapayaWhip" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <StackPanel Margin="10 10 10 5">
+                <TextBlock Text="Введите текст для поиска: " Style="{StaticResource tbAvtorReg}"/>
+                <ComboBox Name="CbFilter"  Style="{StaticResource cbReg}" Width="200" HorizontalAlignment="Left" SelectionChanged="CbFilter_SelectionChanged">
+                    <ComboBoxItem>Нет</ComboBoxItem>
+                    <ComboBoxItem>Фамилия</ComboBoxItem>
+                    <ComboBoxItem>Имя</ComboBoxItem>
+                    <ComboBoxItem>Отчество</ComboBoxItem>
+                    <ComboBoxItem>Группа</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Margin="10 5 10 5">
+                <TextBlock Text="Значение" Style="{StaticResource tbAvtorReg}"/>
+                <TextBox Name="TBoxFind" Style="{StaticResource tboxReg}" HorizontalAlignment="Left" TextChanged="TBoxFind_TextChanged"/>
+            </StackPanel>
+
+            <StackPanel Margin="10 5 10 5">
+                <TextBlock Text="Сортировка" Style="{StaticResource tbAvtorReg}"/>
+                <ComboBox Name="CbSort"  Style="{StaticResource cbReg}" Width="200" HorizontalAlignment="Left" SelectionChanged="CbFilter_SelectionChanged">
+                    <ComboBoxItem>Нет</ComboBoxItem>
+                    <ComboBoxItem>Фамилия↑</ComboBoxItem>
+                    <ComboBoxItem>Имя↑</ComboBoxItem>
+                    <ComboBoxItem>Отчество↑</ComboBoxItem>
+                    <ComboBoxItem>Фамилия↓</ComboBoxItem>
+                    <ComboBoxItem>Имя↓</ComboBoxItem>
+                    <ComboBoxItem>Отчество↓</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="10 5 10 5">
+                <CheckBox Name="ChBPhoto" VerticalAlignment="Center" Click="ChBPhoto_Click"/>
+                <TextBlock Text="Только с фото" Style="{StaticResource tbAvtorReg}" Margin="5 0 0 0"/>
+            </StackPanel>
+          </StackPanel>
+        <ListView Grid.Row="1" Name="lv" Margin="0 0 0 65" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="PapayaWhip" MouseDoubleClick="lv_MouseDoubleClick">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border CornerRadius="10" BorderThickness="1" BorderBrush="Black"  Margin="5" Background="{Binding ChildrenColor}" Cursor="Hand">
+                        <Grid Width="410">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="10 10 0 20">
+                                    <Image Source="{Binding Photo}" Height="180" Width="110" VerticalAlignment="Top"/>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding FullName}" Style="{StaticResource tbViewChild}" TextWrapping="Wrap" FontSize="20" Margin="10 0 10 10"/>
+                                        <TextBlock Style="{StaticResource tbViewChild}">
+                                            <Run Text="Дата рождения: " />
+                                            <Run Text="{Binding Birthdate, ConverterCulture=ru, StringFormat={}{0:d MMMM yyyy}}"/>
+                                            <Run Text="г." />
+                                        </TextBlock>
+                                        <TextBlock Text="{Binding Age, StringFormat=Возраст: {0}}" Style="{StaticResource tbViewChild}"/>
+                                        <TextBlock Text="{Binding Genders.Gender, StringFormat=Пол: {0}}" Style="{StaticResource tbViewChild}"/>
+                                        <TextBlock Text="{Binding Groups.Name_group, StringFormat=Группа: {0}}" Style="{StaticResource tbViewChild}"/>
+                                        <TextBlock Text="{Binding Adress, StringFormat=Адрес: {0}}" Style="{StaticResource tbViewChild}"/>
+                                        <TextBlock Name="tbMather" Uid="{Binding Id_child}" Style="{StaticResource tbViewChild}" TextWrapping="Wrap" Loaded="tbMather_Loaded"/>
+                                        <TextBlock Name="tbVather" Uid="{Binding Id_child}" Style="{StaticResource tbViewChild}" TextWrapping="Wrap" Loaded="tbVather_Loaded"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <Button Name="btnDelete" Uid="{Binding Id_child}" Content="Удалить" Template="{StaticResource btnTemplate}" Margin="0 0 0 10" Click="btnDelete_Click"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Name="btnBack" Content="Назад" Template="{StaticResource btnTemplate}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10" Click="btnBack_Click"/>
+        <Button Name="btnAdd" Content="Добавить" Grid.Column="1" Template="{StaticResource btnTemplate}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" Click="btnAdd_Click"/>
+    </Grid>
+</Page>
