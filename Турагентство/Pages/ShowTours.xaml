@@ -14,21 +14,25 @@
             <RowDefinition/>
             <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-        <StackPanel HorizontalAlignment="Center">
+        <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" Margin="10 10 10 5" HorizontalAlignment="Right">
-                <TextBlock Text="Введите текст для поиска: " Style="{StaticResource tbShowTours}"/>
-                <TextBox Name="TBoxFind" Style="{StaticResource tboxShowTours}" HorizontalAlignment="Left"/>
+                <TextBlock Text="Введите текст для поиска:" Style="{StaticResource tbShowTours}"/>
+                <TextBox Name="TBoxFind" Style="{StaticResource tboxShowTours}" HorizontalAlignment="Left" TextChanged="TBoxFind_TextChanged"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="10 5 10 5" HorizontalAlignment="Right">
                 <TextBlock Text="Выберите тип" Style="{StaticResource tbShowTours}"/>
-                <ComboBox Name="CbType"  Style="{StaticResource cbShowTours}" Width="200" HorizontalAlignment="Left"/>
+                <ComboBox Name="CbType"  Style="{StaticResource cbShowTours}" Width="200" HorizontalAlignment="Left" SelectionChanged="Filter_SelectionChanged"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="10 5 10 5" HorizontalAlignment="Right">
                 <TextBlock Text="Сортировка" Style="{StaticResource tbShowTours}"/>
-                <ComboBox Name="CbSort"  Style="{StaticResource cbShowTours}" Width="200" HorizontalAlignment="Left">
+                <ComboBox Name="CbSort"  Style="{StaticResource cbShowTours}" Width="200" HorizontalAlignment="Left" SelectionChanged="Filter_SelectionChanged">
                     <ComboBoxItem>Нет</ComboBoxItem>
                     <ComboBoxItem>Стоимость↑</ComboBoxItem>
                     <ComboBoxItem>Стоимость↓</ComboBoxItem>
@@ -36,12 +40,17 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="10 5 10 5" HorizontalAlignment="Right">
-                <CheckBox Name="ChBPhoto" VerticalAlignment="Center"/>
+                <CheckBox Name="chBActual" VerticalAlignment="Center" Click="chBActual_Click"/>
                 <TextBlock Text="только акутальные туры" Style="{StaticResource tbShowTours}" Margin="5 0 0 0"/>
             </StackPanel>
         </StackPanel>
 
-        <ListView Grid.Row="1" Name="lv" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="PapayaWhip">
+        <StackPanel Grid.Column="1" Name="spCost" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <TextBlock Text="Общая стоимость туров" Style="{StaticResource tbShowTours}" HorizontalAlignment="Center"/>
+            <TextBlock Name="tbCost" Text="580000" Style="{StaticResource tbShowTours}" HorizontalAlignment="Center"/>
+        </StackPanel>
+        
+        <ListView Grid.Row="1" Grid.ColumnSpan="2" Name="Lv" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="PapayaWhip">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center"/>
@@ -54,12 +63,12 @@
                         <Grid Width="410">
                             <StackPanel>
                                 <StackPanel Margin="10">
-                                    <TextBlock Text="{Binding Name}" Style="{StaticResource tbShowTours}" TextWrapping="Wrap" FontSize="20" Margin="10 0 10 10"/>
+                                    <TextBlock Text="{Binding Name}" Style="{StaticResource tbShowTours}" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="25" Margin="10 0 10 10"/>
                                     <Image Source="{Binding ImagePreview}" Height="110" Width="180"/>
                                     <TextBlock Text="{Binding Price}" Style="{StaticResource tbShowTours}"/>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding IsActual}" Style="{StaticResource tbShowTours}"/>
-                                        <TextBlock Text="{Binding TicketCount, StringFormat=Билетов: {0}}" Style="{StaticResource tbShowTours}"/>
+                                        <TextBlock Text="{Binding ActualTourShow}" Foreground="{Binding ActualTourColor}" Style="{StaticResource tbShowTours}"/>
+                                        <TextBlock Text="{Binding TicketCount, StringFormat=Билетов: {0}}" Style="{StaticResource tbShowTours}" HorizontalAlignment="Right"/>
                                     </StackPanel>
                                 </StackPanel>
                             </StackPanel>
@@ -70,6 +79,6 @@
         </ListView>
 
         <Button Grid.Row="2" Name="btnBack" Content="Назад" Template="{StaticResource btnTemplate}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10"/>
-        <Button Grid.Row="2" Name="btnAdd" Content="Добавить" Template="{StaticResource btnTemplate}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10"/>
+        <Button Grid.Row="2" Grid.Column="1" Name="btnAdd" Content="Добавить" Template="{StaticResource btnTemplate}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10"/>
     </Grid>
 </Page>
