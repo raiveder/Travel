@@ -10,7 +10,7 @@
 
     <Grid Background="PapayaWhip" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="170"/>
+            <RowDefinition Height="200"/>
             <RowDefinition/>
             <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
@@ -19,7 +19,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Center">
+        <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal" Margin="10 10 10 5" HorizontalAlignment="Right">
                 <TextBlock Text="Введите текст для поиска:" Style="{StaticResource tbShowTours}"/>
                 <TextBox Name="TBoxFind" Style="{StaticResource tboxShowTours}" HorizontalAlignment="Left" TextChanged="TBoxFind_TextChanged"/>
@@ -39,7 +39,7 @@
                 </ComboBox>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="10 5 10 5" HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal" Margin="10 5 10 10" HorizontalAlignment="Right">
                 <CheckBox Name="chBActual" VerticalAlignment="Center" Click="chBActual_Click"/>
                 <TextBlock Text="только акутальные туры" Style="{StaticResource tbShowTours}" Margin="5 0 0 0"/>
             </StackPanel>
@@ -49,7 +49,7 @@
             <TextBlock Text="Общая стоимость туров" Style="{StaticResource tbShowTours}" HorizontalAlignment="Center"/>
             <TextBlock Name="tbCost" Text="580000" Style="{StaticResource tbShowTours}" HorizontalAlignment="Center"/>
         </StackPanel>
-        
+
         <ListView Grid.Row="1" Grid.ColumnSpan="2" Name="Lv" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="PapayaWhip">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -59,19 +59,25 @@
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border CornerRadius="10" BorderThickness="1" BorderBrush="Black"  Margin="5" Background="{Binding ChildrenColor}" Cursor="Hand">
-                        <Grid Width="410">
-                            <StackPanel>
-                                <StackPanel Margin="10">
-                                    <TextBlock Text="{Binding Name}" Style="{StaticResource tbShowTours}" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="25" Margin="10 0 10 10"/>
-                                    <Image Source="{Binding ImagePreview}" Height="110" Width="180"/>
-                                    <TextBlock Text="{Binding Price}" Style="{StaticResource tbShowTours}"/>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding ActualTourShow}" Foreground="{Binding ActualTourColor}" Style="{StaticResource tbShowTours}"/>
-                                        <TextBlock Text="{Binding TicketCount, StringFormat=Билетов: {0}}" Style="{StaticResource tbShowTours}" HorizontalAlignment="Right"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            </StackPanel>
+                    <Border CornerRadius="10" BorderThickness="1" BorderBrush="Black" Margin="5" Background="{Binding ChildrenColor}" Cursor="Hand">
+                        <Grid Width="400" Height="310">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="80"/>
+                                <RowDefinition Height="150"/>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.ColumnSpan="2" Text="{Binding Name}" Style="{StaticResource tbShowTours}" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="25"/>
+                            <Image Grid.Row="1" Grid.ColumnSpan="2" Source="{Binding ImagePreview}"/>
+                            <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding PriceShow}" Style="{StaticResource tbShowTours}" FontWeight="DemiBold" FontSize="25" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding ActualTourShow}" Foreground="{Binding ActualTourColor}" Style="{StaticResource tbShowTours}" Margin="20 0 0 0"/>
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding TicketCount, StringFormat=Билетов: {0}}" Style="{StaticResource tbShowTours}" HorizontalAlignment="Right" Margin="0 0 20 0"/>
+
                         </Grid>
                     </Border>
                 </DataTemplate>

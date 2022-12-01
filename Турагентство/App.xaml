@@ -24,14 +24,14 @@
 
         <Style x:Key="tbShowTours" TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"/>
-            <Setter Property="FontFamily" Value="Arial Narrow"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="0 2 10 2"/>
         </Style>
 
         <Style x:Key="tboxShowTours" TargetType="TextBox">
             <Setter Property="FontSize" Value="20"/>
-            <Setter Property="FontFamily" Value="Arial Narrow"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
             <Setter Property="Width" Value="200"/>
             <Setter Property="Height" Value="30"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -39,7 +39,7 @@
 
         <Style x:Key="cbShowTours" TargetType="ComboBox">
             <Setter Property="FontSize" Value="20"/>
-            <Setter Property="FontFamily" Value="Arial Narrow"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
             <Setter Property="MinWidth" Value="200"/>
             <Setter Property="Height" Value="30"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>

@@ -41,6 +41,8 @@ namespace Турагентство
             CbType.SelectedValuePath = "Id";
             CbType.DisplayMemberPath = "Name";
             CbType.SelectedIndex = 0;
+            CbSort.SelectedIndex = 0;
+
             Lv.ItemsSource = BaseClass.TE.Tour.ToList();
         }
 
