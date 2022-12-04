@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Турагентство
 {
@@ -122,9 +112,27 @@ namespace Турагентство
             decimal cost = 0;
             foreach (Tour item in toursList)
             {
-                cost += item.Price;
+                cost += item.Price * item.TicketCount;
             }
-            tbCost.Text = Convert.ToInt32(cost).ToString() + " руб.";
+
+            if (cost > 999)
+            {
+                tbCost.Text = Tour.GetStringCost(cost.ToString()) + " руб.";
+            }
+            else
+            {
+                tbCost.Text = (int)cost + " руб.";
+            }
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            BaseClass.MainFrame.Navigate(new MainMenu());
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

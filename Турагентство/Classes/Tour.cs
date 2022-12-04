@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 
 namespace Турагентство
 {
@@ -28,33 +23,14 @@ namespace Турагентство
         {
             get
             {
-                string result = Price.ToString();
-                result = result.Substring(0, result.Length - 5);
-
-                bool check;
-                if (result.Length > 3)
+                if (Price > 999)
                 {
-                    check = true;
+                    return GetStringCost(Price.ToString()) + " РУБ";
                 }
                 else
                 {
-                    check = false;
+                    return (int)Price + " РУБ";
                 }
-
-                int index = 3;
-                while (check)
-                {
-                    result = result.Insert(result.Length-index, ",");
-
-                    index += 4;
-
-                    if (result.IndexOf(',') < 4)
-                    {
-                        check = false;
-                    }
-                }
-
-                return result + " РУБ";
             }
         }
 
@@ -71,6 +47,36 @@ namespace Турагентство
                     return Brushes.Red;
                 }
             }
+        }
+
+        public static string GetStringCost(string cost)
+        {
+            cost = cost.Substring(0, cost.Length - 5);
+
+            bool check;
+            if (cost.Length > 3)
+            {
+                check = true;
+            }
+            else
+            {
+                check = false;
+            }
+
+            int index = 3;
+            while (check)
+            {
+                cost = cost.Insert(cost.Length - index, ",");
+
+                index += 4;
+
+                if (cost.IndexOf(',') < 4)
+                {
+                    check = false;
+                }
+            }
+
+            return cost;
         }
     }
 }

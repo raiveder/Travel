@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Турагентство"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        MinWidth="1200"
+        MinHeight="700"
+        Title="MainWindow" Height="700" Width="1200">
     <Grid>
         <Frame Name="frm" NavigationUIVisibility="Hidden"/>
     </Grid>

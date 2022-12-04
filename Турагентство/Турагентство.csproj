@@ -77,6 +77,9 @@
     <Compile Include="HotelImage.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -84,6 +87,9 @@
     </Compile>
     <Compile Include="Pages\ShowTours.xaml.cs">
       <DependentUpon>ShowTours.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ShowHotels.xaml.cs">
+      <DependentUpon>ShowHotels.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tour.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -94,6 +100,10 @@
     <Compile Include="TypeOfTour.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="Pages\MainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -108,6 +118,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\ShowTours.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ShowHotels.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
