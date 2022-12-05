@@ -23,19 +23,52 @@
                 <DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Кол-во звёзд" Binding="{Binding CountOfStars}"/>
                 <DataGridTextColumn Header="Страна" Binding="{Binding Country.Name}"/>
-                <DataGridTextColumn Header="Описание" Binding="{Binding Tour.TicketCount}"/>
-                <DataGridTextColumn Header="Кол-во туров"/>
+                <DataGridTextColumn Header="Описание"/>
+
+                <DataGridTemplateColumn Header="Кол-во туров">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Name="tbCountOfTours" Uid="{Binding Id}" Style="{StaticResource tbShowTours}" Loaded="tbCountOfTours_Loaded"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
                 <DataGridTemplateColumn Header="Изменение">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Изменить" Uid="{Binding Id}" Template="{StaticResource btnTemplate}"/>
+                            <Button Name="btnChange" Content="Изменить" Uid="{Binding Id}" Template="{StaticResource btnTemplate}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Удаление">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnDelete" Content="Удалить" Uid="{Binding Id}" Template="{StaticResource btnTemplate}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
             </DataGrid.Columns>
         </DataGrid>
+
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Записей на странице" Style="{StaticResource tbShowTours}"/>
+                <TextBox Name="tboxPageCount" Width="50" Style="{StaticResource tboxShowTours}" TextChanged="tboxPageCount_TextChanged"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Name="tboxFirst" Uid="first" Text="&lt;&lt; " Style="{StaticResource tbShowTours}" Margin="0 0 5 0" MouseDown="GoPage_MouseDown" Cursor="Hand"/>
+                <TextBlock Name="tboxPrev" Uid="back" Text=" &lt; " Style="{StaticResource tbShowTours}" Margin="0 0 5 0" MouseDown="GoPage_MouseDown" Cursor="Hand"/>
+                <TextBlock Name="tboxPrev1" Uid="1" Text="{Binding  Path = NPage[0]}" Visibility="{Binding Visible[0]}"  Style="{StaticResource tbShowTours}" Margin="0 0 5 0" Foreground="{Binding Gray[0]}" MouseDown="GoPage_MouseDown" Cursor="Hand"/>
+                <TextBlock Name="tboxPrev2" Uid="2" Text="{Binding  Path = NPage[1]}" Visibility="{Binding Visible[1]}"  Style="{StaticResource tbShowTours}" Margin="0 0 5 0" Foreground="{Binding Gray[1]}" MouseDown="GoPage_MouseDown" Cursor="Hand"/>
+                <TextBlock Name="tboxPrev3" Uid="3" Text="{Binding  Path = NPage[2]}" Visibility="{Binding Visible[2]}"  Style="{StaticResource tbShowTours}" Margin="0 0 5 0" Foreground="{Binding Gray[2]}" MouseDown="GoPage_MouseDown" Cursor="Hand"/>
+                <TextBlock Name="tboxPrev4" Uid="4" Text="{Binding  Path = NPage[3]}" Visibility="{Binding Visible[3]}"  Style="{StaticResource tbShowTours}" Margin="0 0 5 0" Foreground="{Binding Gray[3]}" MouseDown="GoPage_MouseDown" Cursor="Hand"/>
+                <TextBlock Name="tboxPrev5" Uid="5" Text="{Binding  Path = NPage[4]}" Visibility="{Binding Visible[4]}"  Style="{StaticResource tbShowTours}" Margin="0 0 5 0" Foreground="{Binding Gray[4]}" MouseDown="GoPage_MouseDown" Cursor="Hand"/>
+                <TextBlock Name="tboxPrevNext" Uid="next" Text=" &gt; "  Style="{StaticResource tbShowTours}" Margin="0 0 5 0"  MouseDown="GoPage_MouseDown" Cursor="Hand"/>
+                <TextBlock Name="tboxPrevLast" Uid="last" Text=" &gt;&gt;"  Style="{StaticResource tbShowTours}" Margin="0" MouseDown="GoPage_MouseDown" Cursor="Hand"/>
+            </StackPanel>
+        </StackPanel>
 
         <Button Grid.Row="2" Name="btnBack" Content="Назад" Template="{StaticResource btnTemplate}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10" Click="btnBack_Click"/>
         <Button Grid.Row="2" Grid.Column="1" Name="btnAdd" Content="Добавить" Template="{StaticResource btnTemplate}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" Click="btnAdd_Click"/>

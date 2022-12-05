@@ -129,10 +129,5 @@ namespace Турагентство
         {
             BaseClass.MainFrame.Navigate(new MainMenu());
         }
-
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
