@@ -73,7 +73,10 @@ namespace Турагентство
         {
             try
             {
-                Pagin.CountPage = Convert.ToInt32(tboxPageCount.Text);
+                if (Convert.ToInt32(tboxPageCount.Text) > 0)
+                {
+                    Pagin.CountPage = Convert.ToInt32(tboxPageCount.Text);
+                }
             }
             catch
             {
