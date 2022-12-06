@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainMenu">
 
-    <Grid>
+    <Grid Background="#bae3e8">
         <StackPanel VerticalAlignment="Center">
             <Button Name="btnTours" Content="Туры" Template="{StaticResource btnTemplate}" Margin="10" Click="btnTours_Click"/>
             <Button Name="btnHotels" Content="Отели" Template="{StaticResource btnTemplate}" Margin="10" Click="btnHotels_Click"/>

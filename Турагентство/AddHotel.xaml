@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Турагентство"
         mc:Ignorable="d"
         Title="AddHotel" Height="450" Width="800">
-    <Grid>
+    <Grid Background="#bae3e8">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition/>

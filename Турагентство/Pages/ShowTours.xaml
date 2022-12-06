@@ -8,7 +8,7 @@
       d:DesignHeight="1450" d:DesignWidth="1800"
       Title="ShowTours">
 
-    <Grid Background="PapayaWhip" >
+    <Grid Background="#bae3e8">
         <Grid.RowDefinitions>
             <RowDefinition Height="200"/>
             <RowDefinition/>
@@ -50,7 +50,7 @@
             <TextBlock Name="tbCost" Text="580000" Style="{StaticResource tbShowTours}" HorizontalAlignment="Center"/>
         </StackPanel>
 
-        <ListView Grid.Row="1" Grid.ColumnSpan="2" Name="Lv" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="PapayaWhip">
+        <ListView Grid.Row="1" Grid.ColumnSpan="2" Name="Lv" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#bae3e8">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center"/>
