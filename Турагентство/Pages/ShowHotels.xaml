@@ -36,7 +36,7 @@
                 <DataGridTemplateColumn Header="Изменение">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="btnChange" Content="Изменить" Uid="{Binding Id}" Template="{StaticResource btnTemplate}"/>
+                            <Button Name="btnChange" Content="Изменить" Uid="{Binding Id}" Template="{StaticResource btnTemplate}" Click="btnChange_Click"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -44,7 +44,7 @@
                 <DataGridTemplateColumn Header="Удаление">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="btnDelete" Content="Удалить" Uid="{Binding Id}" Template="{StaticResource btnTemplate}"/>
+                            <Button Name="btnDelete" Content="Удалить" Uid="{Binding Id}" Template="{StaticResource btnTemplate}" Click="btnDelete_Click"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

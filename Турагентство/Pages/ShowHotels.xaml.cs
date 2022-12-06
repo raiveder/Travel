@@ -58,10 +58,18 @@ namespace Турагентство
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            AddHotel addHotel = new AddHotel();
+            addHotel.ShowDialog();
+            HotelList = BaseClass.TE.Hotel.ToList();
+            SetPagination();
         }
 
         private void tboxPageCount_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SetPagination();
+        }
+
+        private void SetPagination()
         {
             try
             {
@@ -87,12 +95,59 @@ namespace Турагентство
         {
             TextBlock tb = (TextBlock)sender;
 
-            int count = 0;
+            int id = Convert.ToInt32(tb.Uid);
 
-            foreach (HotelOfTour item in BaseClass.TE.HotelOfTour.ToList())
+            tb.Text = BaseClass.TE.HotelOfTour.Where(x => x.HotelId == id).ToList().Count.ToString();
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+
+            int id = Convert.ToInt32(btn.Uid);
+
+            if (!IsActualHotel(id))
             {
-
+                Hotel hotel = BaseClass.TE.Hotel.FirstOrDefault(x => x.Id == id);
+                MessageBoxResult response = MessageBox.Show("Вы действительно хотите удалить отель \"" + hotel.Name + "\"?", "Отели", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                SetPagination();
+                if (response == MessageBoxResult.Yes)
+                {
+                    BaseClass.TE.Hotel.Remove(hotel);
+                    BaseClass.TE.SaveChanges();
+                    HotelList = BaseClass.TE.Hotel.ToList();
+                }
             }
+            else
+            {
+                MessageBox.Show("Отель подходит для актуальных туров!", "Отели", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        private bool IsActualHotel(int id)
+        {
+            foreach (HotelOfTour item in BaseClass.TE.HotelOfTour.Where(x => x.HotelId == id).ToList())
+            {
+                if (item.Tour.IsActual)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void btnChange_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+
+            int id = Convert.ToInt32(btn.Uid);
+
+            Hotel hotel = BaseClass.TE.Hotel.FirstOrDefault(x => x.Id == id);
+
+            AddHotel addHotel = new AddHotel(hotel);
+            addHotel.ShowDialog();
+            SetPagination();
         }
     }
 }

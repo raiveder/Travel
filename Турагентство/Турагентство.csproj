@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddHotel.xaml.cs">
+      <DependentUpon>AddHotel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Pagination.cs" />
     <Compile Include="Classes\Tour.cs" />
     <Compile Include="Country.cs">
@@ -104,6 +107,10 @@
     <Compile Include="TypeOfTour.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="AddHotel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
